@@ -32,8 +32,10 @@ protected:
 	HICON m_hIcon;
 	CRoundButton m_RoundButton1;
 	CRoundButton m_RoundButton2;
+	CRoundButtonStyle m_RoundButton2_Style;
 	CRoundButton m_CircleButton;
 	CRoundButton m_ImageButton;
+
 	// Generated message map functions
 	virtual BOOL OnInitDialog();
 	afx_msg void OnSysCommand(UINT nID, LPARAM lParam);

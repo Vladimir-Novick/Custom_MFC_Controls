@@ -8,6 +8,7 @@
 #include "MFCApplicationDlg.h"
 #include "afxdialogex.h"
 #include "..\NVRControls\CWinUtils.h"
+#include "..\NVRControls\CRoundButtonStyle.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
@@ -104,6 +105,52 @@ BOOL CMFCApplicationDlg::OnInitDialog()
 	//  when the application's main window is not a dialog
 	SetIcon(m_hIcon, TRUE);			// Set big icon
 	SetIcon(m_hIcon, FALSE);		// Set small icon
+
+	{
+		LOGFONT tFont;
+		m_RoundButton2.SetButtonStyle(&m_RoundButton2_Style);
+		m_RoundButton2.GetFont(&tFont);  // Get default font
+		lstrcpy(tFont.lfFaceName, _T("Tahoma")); // _NOTRANSLATE_
+		tFont.lfWeight = FW_SEMIBOLD;
+		tFont.lfHeight = CWinUtils::GetFontHeight(14);
+		m_RoundButton2.SetFont(&tFont);
+	}
+
+
+	{
+		tColorScheme tColor;
+		m_RoundButton2.GetTextColor(&tColor); // Get default button color schema
+
+		tColor.m_Hover = RGB(200, 10, 10);
+		tColor.m_Enabled = RGB(40, 40, 40);
+		tColor.m_Clicked = RGB(100, 100, 100);
+		tColor.m_Pressed = RGB(100, 100, 100);
+
+		m_RoundButton2.SetTextColor(&tColor);
+
+
+		// Structure containing Style
+		tButtonStyle tStyle;
+		// Get default Style
+		m_RoundButton2_Style.GetButtonStyle(&tStyle);
+
+		tStyle.m_ColorBorder.m_Hover = RGB(255, 255, 255);
+		tStyle.m_ColorFace.m_Enabled = RGB(100, 255, 40);
+		tStyle.m_ColorBorder.m_Enabled = RGB(150, 150, 150);
+
+		tStyle.m_ColorFace.m_Clicked = RGB(200, 200, 200);
+		tStyle.m_ColorBorder.m_Clicked = RGB(100, 100, 100);
+
+		tStyle.m_ColorFace.m_Pressed = RGB(200, 200, 200);
+		tStyle.m_ColorBorder.m_Pressed = RGB(100, 100, 100);
+		tStyle.m_dRadius = 45;
+
+		m_RoundButton2_Style.SetButtonStyle(&tStyle);
+
+
+	}
+
+
 
 	// TODO: Add extra initialization here
 

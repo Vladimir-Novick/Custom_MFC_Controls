@@ -1,6 +1,19 @@
 #include "StdAfx.h"
 #include "CWinUtils.h"
 
+int CWinUtils::GetFontHeight(int nPointSize) {
+	HDC hdc = ::CreateDC(_T("DISPLAY"), NULL, NULL, NULL);
+	ASSERT(hdc);
+	int cyPixelsPerInch = ::GetDeviceCaps(hdc, LOGPIXELSY);
+	::DeleteDC(hdc);
+
+	int nHeight = -MulDiv(nPointSize, cyPixelsPerInch, 72);
+
+	return nHeight;
+}
+
+
+
 void CWinUtils::SetGradientsDC(HWND hwnd, HDC dc, COLORREF bgSrart,
 	COLORREF bgEnd)
 {

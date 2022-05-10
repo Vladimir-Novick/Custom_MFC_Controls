@@ -56,8 +56,8 @@ CRoundButton::CRoundButton(void):
 }
 CRoundButton::~CRoundButton(void)
 {
-
 	delete m_ptButtonStyle;
+
 	if (m_pBitmapBackground != NULL) {
 		m_pBitmapBackground->DeleteObject();
 		delete m_pBitmapBackground;
